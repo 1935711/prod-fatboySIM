@@ -1,0 +1,28 @@
+<project name="fatboySIM" default="dist" basedir=".">
+  <description>fatboySIM for Xenium 2023</description>
+
+  <!-- Set global properties for this build. -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist" location="dist"/>
+
+  <target name="dist">
+    <mkdir dir="${dist}"/>
+    <tstamp/>
+
+    <!-- Create the distribution. -->
+    <taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="lib/ant-javacard_v23-08-07.jar"/>
+    <javacard jckit="lib/java-card-kit_v2-2-1">
+      <cap output="${dist}/FatboySIM.cap" sources="${src}" classes="${build}" version="1.0">
+        <applet class="com._1935711.fatboysim.FatboySIM" aid="D001935711FA7B01"/>
+        <import exps="lib/3gpp_43-019_600/Annex_B_Export_Files" jar="lib/3gpp_43-019_600/Annex_A_java/sim.jar"/>
+      </cap>
+    </javacard>
+  </target>
+
+  <target name="clean">
+    <!-- Delete the ${build} and ${dist} directory trees. -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

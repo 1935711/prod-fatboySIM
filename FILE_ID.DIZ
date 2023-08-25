@@ -1,0 +1,99 @@
+          ________________
+         | _______________+
+         ||     |     |    \+
+         || GND | VPP | IO ||
+         ||     \____/\____||
+         ||                ||
+         ||  - fatboySIM   ||
+         ||____  ____  ____||
+         ||    \/    \/    ||
+         || VCC | RST | CLK||
+         ||_____|_____|____||
+         |_________________||
+
+           1935711 Presents
+              fatboySIM
+
+  Size ... : .............. 6331 Bytes
+  Date ... : .............. 2023-08-26
+  Party .. : ............. Xenium 2023
+  Compo .. : .................... Wild
+  Platform : . sysmoISIM-SJA2 SIM Card
+
+Mobile operators who provide you with a
+SIM card, may install cardlets (Java
+Card applets) onto it. Not all cards
+contain a Java Card Runtime Environment
+(JCRE) and/or allow for cardlet
+installation, but if it does, the
+operator may even install these
+remotely over the network (without your
+permission).
+
+This demo is a cardlet which can be
+installed on real SIM cards (granted
+you have the key material of your card,
+i.e. the KIc and KID).
+
+What you see is indeed rendered by the
+SIM. Well, the SIM does render every
+single frame, but it packages this
+frame into a 'SET UP MENU' command
+which is sent to the phone. The phone
+interprets this data and renders it 1:1
+how it was described by the SIM.
+Every line of the frame is one menu
+item, and each column is a character in
+a menu item.
+
+The tone that you'll hear are
+preprogrammed on the terminal (your
+phone), and are standardized to sound
+exactly the same on all phones. In many
+ways, this demo is extremely portable,
+it will work on every phone that has
+the SIM toolkit app (even old feature
+phones have it).
+
+You might wonder why the frame rate is
+so low and unstable. There are a couple
+reasons, first of all, the messages
+sent to/received from the SIM are
+actually received by a separate
+computer, namely the modem in your
+phone, and then forwarded to the
+application processor that runs your
+Android, etc. The second reason is that
+because the SIM itself is also a fairly
+complex computer, it contains an OS.
+The OS is what triggers our cardlet to
+render another frame and it does so by
+sending it events. There are two main
+events, the first is the
+'EVENT_STATUS_COMMAND' which occurs
+when the phone sends a 'STATUS'
+command. It does so at frequency of
+roughly 0.5-1 hz. The second is
+'EVENT_MENU_SELECTION', which gets sent
+every time you press one of the items
+in the SIM toolkit menu. Since the
+status message is sent rarely, we can
+speed up the demo by repetedly pressing
+the any items in the menu (I automated
+this with ADB on Android when making
+the recording).
+After each 'SET UP MENU' command sent
+by the SIM, the terminal responds
+with a 'TERMINAL RESPONSE'. To make the
+framerate decent, one would have to be
+able to send a '91XX' status as a
+response to every terminal-sent
+command. This way, the terminal would
+keep fetching a new frame as fast as
+possible, with no additional overhead,
+and without tapping the screen...
+
+Thanks:
+nisereth
+malpa
+lechu
