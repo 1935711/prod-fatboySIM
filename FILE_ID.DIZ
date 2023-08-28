@@ -79,9 +79,9 @@ every time you press one of the items
 in the SIM toolkit menu. Since the
 status message is sent rarely, we can
 speed up the demo by repetedly pressing
-the any items in the menu (I automated
-this with ADB on Android when making
-the recording).
+the items in the menu (I automated this
+with ADB on Android when making the
+recording).
 After each 'SET UP MENU' command sent
 by the SIM, the terminal responds
 with a 'TERMINAL RESPONSE'. To make the
