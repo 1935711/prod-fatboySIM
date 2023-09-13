@@ -73,7 +73,7 @@ events, the first is the
 'EVENT_STATUS_COMMAND' which occurs
 when the phone sends a 'STATUS'
 command. It does so at frequency of
-roughly 0.5-1 hz. The second is
+roughly 0.5-1 Hz. The second is
 'EVENT_MENU_SELECTION', which gets sent
 every time you press one of the items
 in the SIM toolkit menu. Since the
